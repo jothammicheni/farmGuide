@@ -1,0 +1,12 @@
+.star{
+    color: red;
+    font-size: 15px;
+}.register_title{
+    text-align: center;
+    color: red;
+    font-size: medium;
+}.input{
+    text-align: center;
+}.error{
+    color: red;
+}

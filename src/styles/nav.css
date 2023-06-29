@@ -1,0 +1,13 @@
+.a {
+     
+    font-size: 20px;
+    
+}.b{
+   
+    
+    font-size: 20px;
+}.bg-navbar{
+    background-color: rgb(236, 245, 236);
+    position: sticky;
+    top: 0;
+}

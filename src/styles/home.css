@@ -1,0 +1,25 @@
+.page-desc{
+    font-weight: bold;
+    font-size: 3.5rem;
+}.farmer-desc{
+    font-weight: bold;
+}.bg-green{
+    background-color: rgb(236, 245, 236);
+    margin-bottom: 100px;
+    
+}.misson{
+    font-size: bold;
+    margin-top: 30px;
+}.align-start{
+    text-align: start;
+}.align-center{
+    text-align: center;
+}.more-btn{
+    border-radius: 8px;
+    background-color:greenyellow ;
+    border: none;
+    width: 200px;
+    height: 50px;
+}.more-btn:hover{
+    box-shadow: 4px 4px 8px greenyellow;
+}

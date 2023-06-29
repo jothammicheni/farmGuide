@@ -1,0 +1,12 @@
+.content-holder{
+    text-align: start;
+    padding: 10px;
+}.content{
+    font-size: 1.5rem;
+}.content-header{
+    background-color: rgb(230, 221, 221);
+    border-left: 10px solid red;
+    border:  red;
+}.cowImg{
+    max-height:400px;
+}
