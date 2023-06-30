@@ -15,6 +15,9 @@ const Register = () => {
   const navigateToLoginPage=()=>{
     toLogin('./login') 
   }
+  
+ 
+
 
   const validateData = (values) => {
     const errors = {};
