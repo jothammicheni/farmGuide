@@ -4,6 +4,7 @@ import '../components/login'
 import PropTypes from 'prop-types'
 import {  useNavigate } from 'react-router-dom';
 import MainImg from '../assets/mainImage.png'
+import goatimg from '../assets/goat.jpg'
 import CattleImg from '../assets/cattle.jpg'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -95,7 +96,7 @@ const Home = () => {
     <button className=' text-white  more-btn' > Learn More  →</button>
   </Col>
   <Col>
-  <img src ={CattleImg} class = "mx-auto d-block mb-3 img-fluid" alt = "tech image" width = "auto" height = "auto"/>  
+  <img src ={goatimg} class = "mx-auto d-block mb-3 img-fluid" alt = "tech image" width = "auto" height = "auto"/>  
 
   </Col>
 

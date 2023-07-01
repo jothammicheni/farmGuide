@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import axios from 'axios';
 import '../styles/register.css'
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
@@ -47,6 +48,18 @@ const Register = () => {
 
     return errors;
   };
+  const handleSubmit = (values) => {
+    axios
+      .post('http://localhost/farmguide%20database/register.php', values)
+      .then((response) => {
+        console.log(response.data);
+        nextPage('/faq');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
 
   const formik = useFormik({
     initialValues: {
@@ -56,10 +69,9 @@ const Register = () => {
       email: '',
     },
     validate: validateData,
-    onSubmit: () => {
-      nextPage('/faq');
-    },
+    onSubmit: handleSubmit,
   });
+
 
   return (
     <Container className='mt-4'>

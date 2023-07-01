@@ -48,8 +48,8 @@ const Navbars = () => {
             </NavDropdown.Item>
           </NavDropdown>
           <Nav.Link as={Link} to={'/sell'} className='a'></Nav.Link>
-          <Nav.Link as={Link} to={'/login'}  className='a'>products</Nav.Link>
-          <Nav.Link as={Link} to={'/about'} className='a'>About us</Nav.Link>
+          <Nav.Link as={Link} to={'/buy'}  className='a'>products</Nav.Link>
+          <Nav.Link as={Link} to={'/sel'} className='a'>About us</Nav.Link>
           <Nav.Link as={Link} to={'/faq'}  className='a'>Faq</Nav.Link>
           
         </Nav>
