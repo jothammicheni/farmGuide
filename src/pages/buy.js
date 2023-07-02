@@ -3,54 +3,43 @@ import PropTypes from 'prop-types';
 import { Container, Col, Row, Form, Button } from 'react-bootstrap';
 import Sell from './sell';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Buy = () => {
-  const [file, setFile] = useState('');
   const [city, setCity] = useState('');
-  const [items, setItems] = useState([]);
+  const [file, setFile] = useState('');
   const history = useNavigate();
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     // Process the file or perform any required operations
     console.log(file);
+    setFile(file);
   };
 
   const onSubmit = () => {
-    // Create a new item object
-    const newItem = {
-      city: city,
-      file: file
-    };
+    // Create a new FormData object to store the form data
+    const formData = new FormData();
+    formData.append('city', city);
+    formData.append('file', file);
 
     // Send the new item to the PHP script for insertion
-    fetch('http://localhost/farmguide%20database/products.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newItem)
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        // Update the items state if necessary
-        setItems([...items, data]);
+    axios.post('http://localhost/farmguide/products.php', formData)
+      .then((response) => {
+        console.log(response.data);
+        // Optionally, perform any additional actions after successful insertion
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
+        // Handle errors if any
       });
-
-    // Reset the form inputs
-    setCity('');
-    setFile('');
-  };
+  }
 
   return (
     <Container className='mt-5'>
       <h4>Fill all the fields</h4>
       <Container>
-        <Form>
+        <Form  onSubmit={onSubmit} method='post'>
           <Row>
             <Col>
               <Form.Group as={Col} controlId='formGridCity'>
@@ -76,12 +65,12 @@ const Buy = () => {
           </Row>
           <Row className='mt-5'>
             <Col>
-              <Button className='mt-6' onClick={onSubmit}>Submit</Button>
+            <Button className='mt-6' type='submit'>Submit</Button>
             </Col>
           </Row>
         </Form>
       </Container>
-      <Sell items={items} />
+      
     </Container>
   );
 };

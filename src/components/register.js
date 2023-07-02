@@ -49,8 +49,7 @@ const Register = () => {
     return errors;
   };
   const handleSubmit = (values) => {
-    axios
-      .post('http://localhost/farmguide%20database/register.php', values)
+    axios.post('http://localhost/farmguide/register.php', values)
       .then((response) => {
         console.log(response.data);
         nextPage('/faq');
@@ -76,7 +75,7 @@ const Register = () => {
   return (
     <Container className='mt-4'>
       <h1 className='register_title text-danger'>Fill all the required details</h1>
-      <Form className='mt-4 p-4 bg-info text-white' onSubmit={formik.handleSubmit}>
+      <Form className='mt-4 p-4 bg-info text-white' onSubmit={formik.handleSubmit}   method='POST'>
         <Form.Group className='mb-3' controlId='formGridAddress1'>
           <Form.Label>Address <span className='star'>*</span></Form.Label>
           <Form.Control
