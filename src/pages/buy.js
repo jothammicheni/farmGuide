@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Buy = () => {
-  const [city, setCity] = useState('');
+  const [itemname, setName] = useState('');
   const [file, setFile] = useState('');
   const history = useNavigate();
 
@@ -17,13 +17,15 @@ const Buy = () => {
     setFile(file);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+    
     // Create a new FormData object to store the form data
     const formData = new FormData();
-    formData.append('city', city);
+    formData.append('itemname', itemname);
     formData.append('file', file);
 
-    // Send the new item to the PHP script for insertion
+    // Send the new item to the PHP script for insertio
     axios.post('http://localhost/farmguide/products.php', formData)
       .then((response) => {
         console.log(response.data);
@@ -39,15 +41,15 @@ const Buy = () => {
     <Container className='mt-5'>
       <h4>Fill all the fields</h4>
       <Container>
-        <Form  onSubmit={onSubmit} method='post'>
+        <Form  onSubmit={onSubmit} >
           <Row>
             <Col>
               <Form.Group as={Col} controlId='formGridCity'>
                 <Form.Label>City<span className='star'>*</span></Form.Label>
                 <Form.Control
                   className='input'
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
+                  value={itemname}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </Form.Group>
             </Col>

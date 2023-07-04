@@ -48,15 +48,25 @@ const Register = () => {
 
     return errors;
   };
-  const handleSubmit = (values) => {
-    axios.post('http://localhost/farmguide/register.php', values)
-      .then((response) => {
-        console.log(response.data);
-        nextPage('/faq');
+  const handleSubmit = async(e) => {
+   // e.preventDefault();
+    try{
+     const fd=new FormData();
+      fd.append('name',formik.values.name);
+      fd.append('Address',formik.values.Address);
+      fd.append('email',formik.values.email);
+      fd.append('password',formik.values.password);
+      axios.post('http://localhost/farmguide/register.php',fd)
+      .then((response)=>{
+          console.log(response);
       })
-      .catch((error) => {
-        console.error(error);
-      });
+
+
+    }catch(error){
+       console.error(error);
+    }
+
+   
   };
 
 
