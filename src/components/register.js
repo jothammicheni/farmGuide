@@ -52,7 +52,7 @@ const Register = () => {
    // e.preventDefault();
     try{
      const fd=new FormData();
-      fd.append('name',formik.values.name);
+      fd.append('name',formik.values.Name);
       fd.append('Address',formik.values.Address);
       fd.append('email',formik.values.email);
       fd.append('password',formik.values.password);

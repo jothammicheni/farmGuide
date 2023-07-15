@@ -2,13 +2,13 @@ import React from 'react'
 import '../styles/nav.css'
 
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
+import {Container,Card} from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
-const Navbars = () => {
+const Navbars = ({size}) => {
   return (
    
     <Navbar expand="lg" className="bg-navbar">
@@ -49,10 +49,24 @@ const Navbars = () => {
           </NavDropdown>
           <Nav.Link as={Link} to={'/sell'} className='a'></Nav.Link>
           <Nav.Link as={Link} to={'/buy'}  className='a'>products</Nav.Link>
-          <Nav.Link as={Link} to={'/sel'} className='a'>About us</Nav.Link>
-          <Nav.Link as={Link} to={'/faq'}  className='a'>Faq</Nav.Link>
+          <Nav.Link as={Link} to={'/about'} className='a'>About us</Nav.Link>
+
+          <Nav.Link as={Link} to={'/sell'}  className='a'>sell</Nav.Link>
           
         </Nav>
+        
+         <Card>
+           
+            <Nav.Link as={Link} to={'/cart'}  >
+              <Card>
+              
+              <Card.Header>
+                   <h3>Cart :{size}</h3>
+              </Card.Header>
+              </Card>
+           </Nav.Link>
+            
+         </Card>
         <Nav.Link as={Link} to={'/register'}  >
             Register
           </Nav.Link>
