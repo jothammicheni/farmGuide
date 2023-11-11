@@ -16,7 +16,8 @@ import Register from './components/register'
 import { Route,BrowserRouter as Router, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import UserProvider from './components/UserContext'
+import useUser from './components/UserContext'
 
 function App() {
    const[cart,setCart]=useState([])
@@ -46,23 +47,25 @@ function App() {
           console.log(item)
           console.log(price)
 
-        try{  
+         
           setItem(selectedItem.item_name);
           setPrice(selectedItem.price);
           setFile(selectedItem.item_img);
           setDesc(selectedItem.description);
-          const fd=new FormData()
-           fd.append('item',item);
-           fd.append('file', file);
-           fd.append('price', price);
-          fd.append('desc',desc);
-          axios.post('http://localhost/farmguide/cart.php',fd)
+          const formData=new FormData()
+          formData.append('item',item);
+          formData.append('file', file);
+          formData.append('price', price);
+          formData.append('desc',desc);
+          axios.post('http://localhost/farmguide/cart.php',formData)
           .then((response)=>{
             console.log(response)
           }) 
-          }catch(error){
-            console.error(error);
-          }
+          .catch((error) => {
+            console.log('Error adding items to cart:', error);
+            // Handle error, show error message, etc.
+          });
+
         
 
           alert('Item added to cart');
@@ -78,6 +81,7 @@ function App() {
   
   return (
     <div className="App">
+    <UserProvider>
     <Router>
     <Navbars size={cart.length}/>
       <Routes>
@@ -94,7 +98,7 @@ function App() {
         
       </Routes>
     </Router>
-    
+    </UserProvider>
     </div>
   );
 }
